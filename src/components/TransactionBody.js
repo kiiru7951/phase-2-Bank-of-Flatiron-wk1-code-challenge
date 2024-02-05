@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../TransactionBody.css"
 import TransactionTable from "./TransactionList";
 
 function Filter(transactions){
@@ -20,14 +21,18 @@ function Filter(transactions){
   };
 
   return (
-    <div>
+    <div className='TransactionBody'>
+      <div className='filter'>
       <input
         type="text"
         placeholder="Search transactions..."
         value={searchTerm}
         onChange={handleSearch}
       />
+      </div>
+      <div className='table'>
       <TransactionTable transaction={filteredTransactions} />
+      </div>
     </div>
   );
 };

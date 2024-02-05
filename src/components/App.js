@@ -15,11 +15,11 @@ function App(){
       .catch(error => console.error('Error fetching data:', error));
     }, []);
     console.log(data)
-  return <div>
-
+  return (
+    <div className='App'>
       <Header />
       <TransactionBody/>
-      </div>;
+    </div>);
   
   }
 

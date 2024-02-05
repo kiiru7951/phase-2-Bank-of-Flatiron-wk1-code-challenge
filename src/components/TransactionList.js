@@ -6,10 +6,10 @@ import { DataGrid } from '@mui/x-data-grid';
 function TransactionTable({id, date, description, category, amount}) {
     const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'date', headerName: 'Date', type: 'Date', width: 130 },
+        { field: 'date', headerName: 'Date', type: 'Date', width: 140 },
         { field: 'description', headerName: 'Description', width: 400 },
-        { field: 'category', headerName: 'Category', width: 150,},
-        { field: 'amount', headerName: 'Amount',type: 'Number', width: 150,},
+        { field: 'category', headerName: 'Category', width: 140,},
+        { field: 'amount', headerName: 'Amount',type: 'Number', width: 140,},
       ];
       
       const rows =  [
@@ -17,19 +17,18 @@ function TransactionTable({id, date, description, category, amount}) {
           ]
 
     return (
-        <div style={{ height: 400, width: '75%' }} className='TransactionTable'>
+        <div style={{ height: 400, width: '80%' }} className='TransactionTable'>
             <DataGrid
             rows={rows}
             columns={columns}
             initialState={{
             pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-        },
-        }}
-        pageSizeOptions={[5, 5]}
-        checkboxSelection
-    
-      />
+                paginationModel: { page: 0},
+                },
+            }}
+            pageSizeOptions={[5, 5]}
+            checkboxSelection
+            />
         </div>
     )
 }
