@@ -30,6 +30,11 @@ function Filter({ transactions }) {
           value={searchTerm}
           onChange={handleSearch}
         />
+       <button>Search</button>
+
+      </div>
+      <div>
+        
       </div>
       <div className='table'>
         <TransactionTable filteredTransactions={filteredTransactions} />
