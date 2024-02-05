@@ -1,12 +1,15 @@
 import React from 'react';
-import "../../public/bank.png"
+import logo from "../assets/bank.png"
+import "../Header.css"
 
 function Header() {
     return (
-        <header>
-            <h2>BANK OF FLATIRON</h2>
-            <img src="bank.png" alt="bank logo"/>
-        </header>
+        <div className='Header'>
+            <header className='header'>
+                <h2>BANK OF FLATIRON</h2>
+                <img className="logo" src={logo} alt="bank logo"/>
+            </header>
+        </div>
     )
 }
 

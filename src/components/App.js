@@ -1,28 +1,38 @@
-import React from 'react';
+import React,{ useState , useEffect } from 'react';
 import '../App.css';
 import Header from "./Header"
+import TransactionBody from './TransactionBody';
 
+function App(){
+  const [data, setData] = useState([]);
 
-async function fetchData() {
-  const data = await import('../data/db.json');
-  console.log(data.transactions);
-
+  useEffect(() => {
+    fetch("http://localhost:3000")
+      .then((response) => response.json())
+      .then((result) => {
+        setData(result);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+    }, []);
+    console.log(data)
   return <div>
-    <Header />
-    <TransactionsList />
 
-    </div>;
+      <Header />
+      <TransactionBody/>
+      </div>;
+  
+  }
 
-}
+
 
 /*function App() {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000")
+    fetch("http://localhost:3000/transactions")
       .then((response) => response.json())
       .then((data) => {
-        setTransactions(data.transactions);
+        setTransactions(data);
       });
       console.log({transactions})
     }, []);
