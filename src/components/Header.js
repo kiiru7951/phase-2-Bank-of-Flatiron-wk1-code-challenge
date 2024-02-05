@@ -15,4 +15,3 @@ function Header() {
 
 export default Header;
 
-/*{transactions.map((transaction) => transaction.id)}*/

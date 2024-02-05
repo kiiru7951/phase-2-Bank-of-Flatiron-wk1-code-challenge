@@ -1,42 +1,41 @@
 import React, { useState } from 'react';
-import "../TransactionBody.css"
-import TransactionTable from "./TransactionList";
+import "../TransactionBody.css";
+import TransactionTable from "./TransactionTable";
 
-function Filter(transactions){
+function Filter({ transactions }) { 
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filteredTransactions, setTransactions] = useState(transactions);
+  const [searchTerm, setTerm] = useState('');
+  const [filteredTransactions, setTransactions] = useState(transactions); 
 
   const handleSearch = (event) => {
     const term = event.target.value;
-    setSearchTerm(term);
+    setTerm(term);
     filterTransactions(term);
   };
 
   const filterTransactions = (term) => {
+    term = term.toLowerCase(); //for case insensitivity
     const filtered = transactions.filter((transaction) =>
-      transaction.description.includes(term)
+      transaction.description.toLowerCase().includes(term)
     );
-    setTransactions(filtered);
+    setTransactions(filtered); 
   };
 
   return (
     <div className='TransactionBody'>
       <div className='filter'>
-      <input
-        type="text"
-        placeholder="Search transactions..."
-        value={searchTerm}
-        onChange={handleSearch}
-      />
+        <input
+          type="text"
+          placeholder="Search transactions..."
+          value={searchTerm}
+          onChange={handleSearch}
+        />
       </div>
       <div className='table'>
-      <TransactionTable transaction={filteredTransactions} />
+        <TransactionTable filteredTransactions={filteredTransactions} />
       </div>
     </div>
   );
-};
-
-
+}
 
 export default Filter;
