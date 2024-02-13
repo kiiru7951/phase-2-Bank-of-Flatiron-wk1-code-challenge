@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../TransactionBody.css";
 import TransactionTable from "./TransactionTable";
 
@@ -6,6 +6,10 @@ function Filter({ transactions }) {
 
   const [searchTerm, setTerm] = useState('');
   const [filteredTransactions, setTransactions] = useState(transactions); 
+
+  useEffect(() => {
+    setTransactions(transactions);
+  }, [transactions]);
 
   const handleSearch = (event) => {
     const term = event.target.value;
